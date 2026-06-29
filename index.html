@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HK PATIL AI Engine</title>
     <style>
-        /* 1. लग्जरी सिनेमैटिक डार्क बैकग्राउंड */
+        /* प्रीमियम और वाइब्रेंट डार्क बैकग्राउंड */
         body { 
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             text-align: center; 
-            background: #020205;
+            background: #06060c;
             min-height: 100vh;
             margin: 0;
             padding: 20px; 
@@ -17,103 +17,103 @@
             justify-content: center;
             align-items: center;
             box-sizing: border-box;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* कार्ड के ठीक पीछे चमकती हुई जादुई एनिमेटेड रिंग */
-        .bg-glow-ring {
+        /* लिक्विड ऑरोरा नियॉन ग्लो इफेक्ट्स */
+        body::before, body::after {
+            content: '';
             position: absolute;
-            width: 450px;
-            height: 450px;
+            width: 350px;
+            height: 350px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, #00f2fe, #7300ff, #ff007f, #00f2fe);
-            filter: blur(80px);
-            opacity: 0.25;
+            filter: blur(130px);
             z-index: 0;
-            animation: rotateGlow 10s linear infinite;
+            animation: pulseGlowEffect 6s infinite alternate ease-in-out;
+        }
+        body::before {
+            background: #ff007f;
+            top: 5%; left: 5%;
+        }
+        body::after {
+            background: #00f2fe;
+            bottom: 5%; right: 5%;
+            animation-delay: -3s;
         }
 
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
+        @keyframes pulseGlowEffect {
+            0% { transform: scale(1) translate(0px, 0px); }
+            100% { transform: scale(1.3) translate(20px, 20px); }
         }
 
-        /* 2. अल्ट्रा-प्रीमियम डार्क ग्लास कार्ड */
+        /* 3D ग्लास-मॉर्फिज्म कार्ड */
         .container { 
             max-width: 400px; 
             width: 100%;
-            background: rgba(6, 6, 14, 0.85); 
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            padding: 50px 30px; 
-            border-radius: 32px; 
+            background: rgba(15, 15, 25, 0.75); 
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            padding: 45px 30px; 
+            border-radius: 28px; 
             position: relative;
             z-index: 1;
-            /* क्रिस्प बॉर्डर */
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255,255,255,0.1); 
-            animation: cardEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.1); 
+            animation: smoothEntrance 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
             color: white;
             box-sizing: border-box;
         }
 
-        @keyframes cardEntrance {
-            0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+        @keyframes smoothEntrance {
+            0% { opacity: 0; transform: scale(0.9) translateY(30px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* आपका ब्रांड नेम */
+        /* आपका नया ब्रांड नेम */
         h2 { 
-            font-size: 40px;
+            font-size: 36px;
             font-weight: 900; 
-            margin: 0 0 10px 0; 
-            letter-spacing: 2px;
+            margin: 0 0 8px 0; 
+            letter-spacing: 1px;
             text-transform: uppercase;
-            background: linear-gradient(to right, #ffffff, #00f2fe, #ff007f);
-            background-size: 200% auto;
+            background: linear-gradient(135deg, #00f2fe, #ff007f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: textShine 4s linear infinite;
-        }
-
-        @keyframes textShine {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
         }
         
-        p { color: #6f7f95; font-size: 14px; margin-bottom: 35px; letter-spacing: 0.5px; }
+        p { color: #a4b0be; font-size: 14px; margin-bottom: 35px; }
 
-        /* 3. Sci-Fi एआई कैमरा */
+        /* कैमरा कंटेनर */
         #cameraContainer {
             display: none;
             width: 100%;
             max-width: 320px;
             margin: 0 auto 25px auto;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
-            border: 2px solid rgba(0, 242, 254, 0.5);
-            box-shadow: 0 0 40px rgba(0, 242, 254, 0.25);
+            border: 2px solid #00f2fe;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.4);
             position: relative;
-            animation: cameraZoomIn 0.4s ease-out forwards;
+            animation: cameraZoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
         }
 
         @keyframes cameraZoomIn {
-            0% { transform: scale(0.8); opacity: 0; }
+            0% { transform: scale(0.7); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
         video { width: 100%; height: auto; display: block; transform: scaleX(-1); }
 
-        /* साइबर लेज़र लाइन */
+        /* लेज़र स्कैनिंग लाइन */
         .scanner-line {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 4px;
             background: linear-gradient(to right, transparent, #00f2fe, transparent);
-            box-shadow: 0 0 20px #00f2fe;
-            animation: scan 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            box-shadow: 0 0 15px #00f2fe;
+            animation: scan 2s linear infinite;
         }
 
         @keyframes scan {
@@ -122,86 +122,79 @@
             100% { top: 0%; }
         }
         
-        /* 4. सुपर-प्रीमियम ल्यूमिनेसेंट बटन्स */
+        /* प्रीमियम गेमिंग/एआई बटन्स */
         .btn { 
             display: flex; align-items: center; justify-content: center; gap: 12px;
-            color: white; border: none; padding: 18px 20px; font-size: 15px; font-weight: 700;
-            border-radius: 18px; cursor: pointer; width: 100%; margin-bottom: 20px;
+            color: white; border: none; padding: 18px 20px; font-size: 16px; font-weight: 700;
+            border-radius: 16px; cursor: pointer; width: 100%; margin-bottom: 18px;
             box-sizing: border-box;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         /* Take A Selfie बटन */
         .btn-selfie {
-            background: #ffffff;
-            color: #020205;
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
         }
 
-        /* शटर बटन */
+        /* लाइव क्लिक शटर बटन */
         .btn-capture {
-            background: linear-gradient(135deg, #ff0055, #ff5500);
+            background: linear-gradient(135deg, #ff007f, #ff7675);
             display: none;
-            animation: pulseGlow 1.2s infinite alternate;
+            animation: pulseGlow 1.5s infinite alternate;
         }
 
         @keyframes pulseGlow {
-            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 85, 0.4); }
-            100% { transform: scale(1.03); box-shadow: 0 0 30px rgba(255, 0, 85, 0.8); }
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 127, 0.4); }
+            100% { transform: scale(1.04); box-shadow: 0 0 30px rgba(255, 0, 127, 0.8); }
         }
 
         /* Find Photo बटन */
         .btn-find {
-            background: linear-gradient(135deg, #7300ff, #ff007f);
-            box-shadow: 0 4px 25px rgba(115, 0, 255, 0.4);
+            background: linear-gradient(135deg, #7000ff, #aa00ff);
+            box-shadow: 0 4px 20px rgba(112, 0, 255, 0.3);
         }
         
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 242, 254, 0.3);
-        }
-
-        .btn-selfie:hover {
-            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px) scale(1.02);
+            filter: brightness(1.15);
         }
 
         .btn:active { transform: translateY(1px); }
         
-        /* 5. सिनेमैटिक फोटो गैलरी */
+        /* फोटो रिपल्स ग्रिड */
         .gallery { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 35px; 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; 
         }
 
         .gallery img { 
             width: 100%; height: 130px; object-fit: cover;
-            border-radius: 18px; 
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            border-radius: 16px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
             opacity: 0;
-            transform: translateY(25px);
-            animation: photoReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform: translateY(20px) scale(0.9);
+            animation: photoReveal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         @keyframes photoReveal {
-            100% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         #statusMessage { 
             margin-top: 20px; font-weight: 600; font-size: 14px;
-            color: #00f2fe; text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+            color: #00f2fe; text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
         }
     </style>
 </head>
 <body>
 
-<!-- बैकग्राउंड एनिमेटेड रिंग -->
-<div class="bg-glow-ring"></div>
-
 <div class="container">
+    <!-- ब्रांड नेम बदला गया -->
     <h2>HK PATIL</h2>
-    <p>AI INSTANT PHOTO DELIVERY</p>
+    <p>AI-Powered Instant Photo Delivery System</p>
     
     <!-- लाइव कैमरा स्क्रीन -->
     <div id="cameraContainer">
@@ -209,7 +202,7 @@
         <video id="video" autoplay playsinline></video>
     </div>
 
-    <!-- बटन्स कंट्रोल -->
+    <!-- बटन्स के नाम बदले गए -->
     <button class="btn btn-selfie" id="startBtn" onclick="startCamera()">Take A Selfie 📸</button>
     <button class="btn btn-capture" id="captureBtn" onclick="takeSnapshot()">Click Photo 🎯</button>
     <button class="btn btn-find" onclick="getPhotos()">Find Photo 🔍</button>
@@ -265,8 +258,7 @@
             startBtn.style.display = "flex";
             startBtn.innerHTML = "Selfie Verified! ✅";
             startBtn.style.background = "linear-gradient(135deg, #00b894, #00cec9)";
-            startBtn.style.color = "#ffffff";
-            startBtn.style.boxShadow = "0 0 25px rgba(0, 184, 148, 0.5)";
+            startBtn.style.boxShadow = "0 0 25px rgba(0, 184, 148, 0.6)";
         }, 'image/jpeg');
     }
 
