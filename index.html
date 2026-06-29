@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HK PATIL AI Engine</title>
+    <style>
+        /* 1. लग्जरी सिनेमैटिक डार्क बैकग्राउंड */
+        body { 
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            text-align: center; 
+            background: #020205;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* कार्ड के ठीक पीछे चमकती हुई जादुई एनिमेटेड रिंग */
+        .bg-glow-ring {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #00f2fe, #7300ff, #ff007f, #00f2fe);
+            filter: blur(80px);
+            opacity: 0.25;
+            z-index: 0;
+            animation: rotateGlow 10s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* 2. अल्ट्रा-प्रीमियम डार्क ग्लास कार्ड */
+        .container { 
+            max-width: 400px; 
+            width: 100%;
+            background: rgba(6, 6, 14, 0.85); 
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            padding: 50px 30px; 
+            border-radius: 32px; 
+            position: relative;
+            z-index: 1;
+            /* क्रिस्प बॉर्डर */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255,255,255,0.1); 
+            animation: cardEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        @keyframes cardEntrance {
+            0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* आपका ब्रांड नेम */
+        h2 { 
+            font-size: 40px;
+            font-weight: 900; 
+            margin: 0 0 10px 0; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ffffff, #00f2fe, #ff007f);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShine 4s linear infinite;
+        }
+
+        @keyframes textShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        p { color: #6f7f95; font-size: 14px; margin-bottom: 35px; letter-spacing: 0.5px; }
+
+        /* 3. Sci-Fi एआई कैमरा */
+        #cameraContainer {
+            display: none;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 25px auto;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 242, 254, 0.5);
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.25);
+            position: relative;
+            animation: cameraZoomIn 0.4s ease-out forwards;
+        }
+
+        @keyframes cameraZoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        video { width: 100%; height: auto; display: block; transform: scaleX(-1); }
+
+        /* साइबर लेज़र लाइन */
+        .scanner-line {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(to right, transparent, #00f2fe, transparent);
+            box-shadow: 0 0 20px #00f2fe;
+            animation: scan 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            50% { top: 100%; }
+            100% { top: 0%; }
+        }
+        
+        /* 4. सुपर-प्रीमियम ल्यूमिनेसेंट बटन्स */
+        .btn { 
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            color: white; border: none; padding: 18px 20px; font-size: 15px; font-weight: 700;
+            border-radius: 18px; cursor: pointer; width: 100%; margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Take A Selfie बटन */
+        .btn-selfie {
+            background: #ffffff;
+            color: #020205;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* शटर बटन */
+        .btn-capture {
+            background: linear-gradient(135deg, #ff0055, #ff5500);
+            display: none;
+            animation: pulseGlow 1.2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 85, 0.4); }
+            100% { transform: scale(1.03); box-shadow: 0 0 30px rgba(255, 0, 85, 0.8); }
+        }
+
+        /* Find Photo बटन */
+        .btn-find {
+            background: linear-gradient(135deg, #7300ff, #ff007f);
+            box-shadow: 0 4px 25px rgba(115, 0, 255, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 242, 254, 0.3);
+        }
+
+        .btn-selfie:hover {
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:active { transform: translateY(1px); }
+        
+        /* 5. सिनेमैटिक फोटो गैलरी */
+        .gallery { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 35px; 
+        }
+
+        .gallery img { 
+            width: 100%; height: 130px; object-fit: cover;
+            border-radius: 18px; 
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            opacity: 0;
+            transform: translateY(25px);
+            animation: photoReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes photoReveal {
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        #statusMessage { 
+            margin-top: 20px; font-weight: 600; font-size: 14px;
+            color: #00f2fe; text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<!-- बैकग्राउंड एनिमेटेड रिंग -->
+<div class="bg-glow-ring"></div>
+
+<div class="container">
+    <h2>HK PATIL</h2>
+    <p>AI INSTANT PHOTO DELIVERY</p>
+    
+    <!-- लाइव कैमरा स्क्रीन -->
+    <div id="cameraContainer">
+        <div class="scanner-line"></div>
+        <video id="video" autoplay playsinline></video>
+    </div>
+
+    <!-- बटन्स कंट्रोल -->
+    <button class="btn btn-selfie" id="startBtn" onclick="startCamera()">Take A Selfie 📸</button>
+    <button class="btn btn-capture" id="captureBtn" onclick="takeSnapshot()">Click Photo 🎯</button>
+    <button class="btn btn-find" onclick="getPhotos()">Find Photo 🔍</button>
+
+    <div id="statusMessage"></div>
+    <div id="gallery" class="gallery"></div>
+</div>
+
+<script>
+    let streamInstance = null;
+    let blobData = null;
+
+    async function startCamera() {
+        const video = document.getElementById('video');
+        const cameraContainer = document.getElementById('cameraContainer');
+        const startBtn = document.getElementById('startBtn');
+        const captureBtn = document.getElementById('captureBtn');
+
+        try {
+            streamInstance = await navigator.mediaDevices.getUserMedia({ 
+                video: { facingMode: "user" }, audio: false 
+            });
+            video.srcObject = streamInstance;
+            cameraContainer.style.display = "block";
+            startBtn.style.display = "none";
+            captureBtn.style.display = "flex";
+            document.getElementById('statusMessage').innerHTML = "";
+        } catch (err) {
+            alert("Camera access denied!");
+        }
+    }
+
+    function takeSnapshot() {
+        const video = document.getElementById('video');
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        
+        const ctx = canvas.getContext('2d');
+        ctx.translate(canvas.width, 0);
+        ctx.scale(-1, 1);
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        if(streamInstance) {
+            streamInstance.getTracks().forEach(track => track.stop());
+        }
+
+        canvas.toBlob(function(blob) {
+            blobData = blob;
+            document.getElementById('cameraContainer').style.display = "none";
+            document.getElementById('captureBtn').style.display = "none";
+            const startBtn = document.getElementById('startBtn');
+            startBtn.style.display = "flex";
+            startBtn.innerHTML = "Selfie Verified! ✅";
+            startBtn.style.background = "linear-gradient(135deg, #00b894, #00cec9)";
+            startBtn.style.color = "#ffffff";
+            startBtn.style.boxShadow = "0 0 25px rgba(0, 184, 148, 0.5)";
+        }, 'image/jpeg');
+    }
+
+    async function getPhotos() {
+        const gallery = document.getElementById('gallery');
+        const statusMessage = document.getElementById('statusMessage');
+        gallery.innerHTML = ""; statusMessage.innerHTML = "";
+
+        if (!blobData) {
+            alert("Please take a selfie first!");
+            return;
+        }
+
+        statusMessage.innerHTML = "Matching your face with database... ⏱️";
+
+        const formData = new FormData();
+        formData.append("selfie", blobData, "selfie.jpg");
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/find_my_photos', {
+                method: 'POST',
+                body: formData
+            });
+            if (!response.ok) throw new Error();
+            const data = await response.json();
+            statusMessage.innerHTML = ""; 
+
+            if (data.matched_photos && data.matched_photos.length > 0) {
+                data.matched_photos.forEach((photoName, index) => {
+                    const img = document.createElement('img');
+                    img.src = `http://127.0.0.1:5000/wedding_photos/${photoName}`;
+                    img.style.animationDelay = `${index * 0.1}s`;
+                    gallery.appendChild(img);
+                });
+            } else {
+                statusMessage.innerHTML = "No photos found! 😢";
+            }
+        } catch (error) {
+            statusMessage.innerHTML = "AI Engine Connection Timeout.";
+        }
+    }
+</script>
+</body>
+</html>
